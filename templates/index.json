@@ -39,7 +39,7 @@
         "image": "shopify://shop_images/putting-on-your-shoes_925x_f4184c9e-c505-498c-8c43-6c1e9545a859.webp",
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "image_behavior": "ambient",
+        "image_behavior": "fixed",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
         "show_text_box": false,
