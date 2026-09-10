@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "gift_banner": {
+      "type": "gift-guide-banner",
+      "settings": {
+        "image": "shopify://shop_images/Untitled_1.png",
+        "eyebrow": "Gift Guide",
+        "heading": "The Gift Guide",
+        "text": "<p>Find something special for everyone on your list.</p>",
+        "button_label": "Shop the guide",
+        "button_link": "",
+        "alignment": "center",
+        "desktop_height": 620,
+        "mobile_height": 620,
+        "max_width": 1200
+      }
+    },
+    "gift_grid": {
+      "type": "gift-guide-grid",
+      "blocks": {
+        "product_1": { "type": "product", "settings": { "product": "" } },
+        "product_2": { "type": "product", "settings": { "product": "" } },
+        "product_3": { "type": "product", "settings": { "product": "" } },
+        "product_4": { "type": "product", "settings": { "product": "" } },
+        "product_5": { "type": "product", "settings": { "product": "" } },
+        "product_6": { "type": "product", "settings": { "product": "" } }
+      },
+      "block_order": ["product_1", "product_2", "product_3", "product_4", "product_5", "product_6"],
+      "settings": { "heading": "Gift Guide", "max_width": 1180 }
+    }
+  },
+  "order": ["gift_banner", "gift_grid"]
+}
