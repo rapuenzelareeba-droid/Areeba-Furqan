@@ -36,14 +36,14 @@
         "button"
       ],
       "settings": {
-        "image": "shopify://shop_images/putting-on-your-shoes_925x_f4184c9e-c505-498c-8c43-6c1e9545a859.webp",
-        "image_overlay_opacity": 40,
+        "image": "shopify://shop_images/Untitled_1.png",
+        "image_overlay_opacity": 60,
         "image_height": "large",
         "image_behavior": "fixed",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
         "show_text_box": false,
-        "color_scheme": "scheme-3",
+        "color_scheme": "scheme-663daf11-7ffb-480a-ab2c-ed5a8deee2aa",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
         "show_text_below": true
@@ -76,10 +76,70 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "multirow_JUPBrk": {
+      "type": "multirow",
+      "blocks": {
+        "row_34gDNB": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/woman-in-the-city_925x_fa6b306e-cdb3-4593-94a7-91ba71d3e059.jpg",
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "row_zE9M9D": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/mens-fall-fashion-jacket_925x_dfe6291e-8e87-4c26-8fd6-986ce67a4b0b.jpg",
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "row_xcdXLx": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/city-woman-fashion_925x_2x_e91139c3-68ff-49da-98c9-5a56a049fb30.jpg",
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_34gDNB",
+        "row_zE9M9D",
+        "row_xcdXLx"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "multirow_JUPBrk"
   ]
 }
