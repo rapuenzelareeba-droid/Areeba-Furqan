@@ -25,10 +25,42 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "1789154059756cec41": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d3d5ce9_xQJimY": {
+          "type": "ai_gen_block_d3d5ce9",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_1.png",
+            "eyebrow": "Gift guide",
+            "heading": "The gift guide",
+            "description": "<p>Discover the perfect gifts for everyone on your list.</p>",
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/all",
+            "desktop_width_percent": 100,
+            "hero_height": 620,
+            "mobile_height": 520,
+            "image_position": "center center",
+            "background_color": "#F8F8F5",
+            "text_color": "#121212",
+            "button_color": "#121212",
+            "button_text_color": "#FFFFFF",
+            "focus_color": "#EA3989",
+            "button_radius": 8
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d3d5ce9_xQJimY"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "custom_liquid_dqc7kP"
+    "custom_liquid_dqc7kP",
+    "1789154059756cec41"
   ]
 }
