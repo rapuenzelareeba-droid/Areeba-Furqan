@@ -135,11 +135,61 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "1789155352269acb55": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_64c4fec_AmMNRW": {
+          "type": "ai_gen_block_64c4fec",
+          "settings": {
+            "heading": "Our journey",
+            "intro": "Follow the moments that shaped our story.",
+            "item_1_eyebrow": "01",
+            "item_1_title": "The beginning",
+            "item_1_description": "Share the first meaningful moment in your story.",
+            "item_2_eyebrow": "02",
+            "item_2_title": "Growing together",
+            "item_2_description": "Describe how your idea evolved over time.",
+            "item_3_eyebrow": "03",
+            "item_3_title": "A defining moment",
+            "item_3_description": "Highlight a milestone your customers will remember.",
+            "item_4_eyebrow": "04",
+            "item_4_title": "Looking ahead",
+            "item_4_description": "Share the next chapter and what inspires it.",
+            "item_5_eyebrow": "05",
+            "item_5_title": "Today",
+            "item_5_description": "End with the current purpose behind your brand.",
+            "desktop_width_percent": 100,
+            "alignment": "center",
+            "vertical_padding": 60,
+            "horizontal_padding": 20,
+            "heading_spacing": 40,
+            "heading_size": 42,
+            "mobile_heading_size": 32,
+            "line_width": 2,
+            "marker_size": 18,
+            "marker_border_width": 3,
+            "background_color": "#ffffff",
+            "card_background": "#f3f3f3",
+            "text_color": "#121212",
+            "heading_color": "#121212",
+            "line_color": "#b5b5b5",
+            "card_border_color": "#d6d6d6",
+            "active_color": "#121212"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_64c4fec_AmMNRW"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
-    "multirow_JUPBrk"
+    "multirow_JUPBrk",
+    "1789155352269acb55"
   ]
 }
