@@ -1,1 +1,47 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"footer":{"type":"footer","settings":{"color_scheme":"scheme-1","newsletter_enable":true,"newsletter_heading":"Subscribe to our emails","enable_follow_on_shop":true,"show_social":true,"enable_country_selector":true,"enable_language_selector":true,"payment_enable":true,"show_policy":true,"margin_top":0,"padding_top":36,"padding_bottom":36}}},"order":["footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "custom_liquid_KxAjxg": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<footer style=\"padding: 40px 20px; text-align: center; border-top: 1px solid rgba(0,0,0,.1);\">\n  <div style=\"max-width: 1200px; margin: 0 auto;\">\n    <h2 style=\"margin-bottom: 10px;\">Areeba-Furqan</h2>\n\n\n<p style=\"margin-bottom: 20px;\">\n  Quality products, simple shopping experience.\n</p>\n\n<nav style=\"display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;\">\n  <a href=\"/collections/all\">Shop</a>\n  <a href=\"/pages/about-us\">About Us</a>\n  <a href=\"/pages/contact\">Contact</a>\n  <a href=\"/policies/privacy-policy\">Privacy Policy</a>\n  <a href=\"/policies/terms-of-service\">Terms of Service</a>\n</nav>\n\n<p style=\"margin-top: 25px; font-size: 14px;\">\n  © {{ 'now' | date: '%Y' }} Areeba-Furqan. All rights reserved.\n</p>\n\n\n  </div>\n</footer>",
+        "color_scheme": "scheme-663daf11-7ffb-480a-ab2c-ed5a8deee2aa",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_KxAjxg",
+    "footer"
+  ]
+}
