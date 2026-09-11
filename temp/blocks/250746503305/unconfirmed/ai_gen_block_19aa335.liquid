@@ -1,6 +1,68 @@
+{% doc %}
+  @prompt
+    A magazine-style editorial layout
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-editorial-{{ ai_gen_id }} { display: block; width: {{ block.settings.desktop_width_percent }}%; max-width: 100%; margin: 0 auto; background: {{ block.settings.background_color }}; color: {{ block.settings.text_color }}; font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }}; }
+  .ai-editorial-{{ ai_gen_id }}__inner { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr); min-height: 560px; }
+  .ai-editorial-{{ ai_gen_id }}__media { position: relative; min-height: 560px; overflow: hidden; background: #e9e9e9; }
+  .ai-editorial-{{ ai_gen_id }}__media img, .ai-editorial-{{ ai_gen_id }}__placeholder svg { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .ai-editorial-{{ ai_gen_id }}__placeholder { width: 100%; height: 100%; min-height: 560px; display: flex; align-items: center; justify-content: center; color: #555555; }
+  .ai-editorial-{{ ai_gen_id }}__empty { position: absolute; bottom: 18px; left: 18px; right: 18px; padding: 10px 14px; background: rgba(255,255,255,.92); color: #333333; font-size: 13px; text-align: center; }
+  .ai-editorial-{{ ai_gen_id }}__content { display: flex; flex-direction: column; justify-content: center; padding: clamp(32px, 6vw, 86px) clamp(24px, 6vw, 78px); border-top: {{ block.settings.border_width }}px solid {{ block.settings.accent_color }}; border-bottom: {{ block.settings.border_width }}px solid {{ block.settings.accent_color }}; }
+  .ai-editorial-{{ ai_gen_id }}__eyebrow { margin: 0 0 22px; color: {{ block.settings.accent_color }}; font-size: 12px; font-weight: 700; letter-spacing: .18em; line-height: 1.4; text-transform: uppercase; }
+  .ai-editorial-{{ ai_gen_id }}__title { margin: 0; color: {{ block.settings.text_color }}; font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }}; font-size: clamp(42px, 6vw, {{ block.settings.heading_size }}px); font-weight: 400; letter-spacing: -.04em; line-height: .98; }
+  .ai-editorial-{{ ai_gen_id }}__rule { width: 54px; height: 1px; margin: 30px 0 24px; background: {{ block.settings.accent_color }}; }
+  .ai-editorial-{{ ai_gen_id }}__copy { max-width: 440px; margin: 0; color: {{ block.settings.text_color }}; font-size: 16px; line-height: 1.65; }
+  .ai-editorial-{{ ai_gen_id }}__link { display: inline-flex; align-items: center; align-self: flex-start; margin-top: 32px; padding-bottom: 6px; border-bottom: 1px solid currentColor; color: {{ block.settings.text_color }}; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+  .ai-editorial-{{ ai_gen_id }}__link:focus-visible { outline: 2px solid {{ block.settings.accent_color }}; outline-offset: 5px; }
+  @media screen and (max-width: 749px) { .ai-editorial-{{ ai_gen_id }}__inner { grid-template-columns: 1fr; } .ai-editorial-{{ ai_gen_id }}__media, .ai-editorial-{{ ai_gen_id }}__placeholder { min-height: 390px; } .ai-editorial-{{ ai_gen_id }}__content { min-height: 390px; border-top: 0; } }
+{% endstyle %}
+
+<div class="ai-editorial-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-editorial-{{ ai_gen_id }}__inner">
+    <div class="ai-editorial-{{ ai_gen_id }}__media">
+      {% if block.settings.image %}
+        <img src="{{ block.settings.image | image_url: width: 1600 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+      {% else %}
+        <div class="ai-editorial-{{ ai_gen_id }}__placeholder">{{ 'image' | placeholder_svg_tag }}<span class="ai-editorial-{{ ai_gen_id }}__empty">Add an editorial image to complete this feature.</span></div>
+      {% endif %}
+    </div>
+    <div class="ai-editorial-{{ ai_gen_id }}__content">
+      {% if block.settings.eyebrow != blank %}<p class="ai-editorial-{{ ai_gen_id }}__eyebrow">{{ block.settings.eyebrow }}</p>{% endif %}
+      {% if block.settings.title != blank %}<h2 class="ai-editorial-{{ ai_gen_id }}__title">{{ block.settings.title }}</h2>{% endif %}
+      <div class="ai-editorial-{{ ai_gen_id }}__rule"></div>
+      {% if block.settings.description != blank %}<div class="ai-editorial-{{ ai_gen_id }}__copy">{{ block.settings.description }}</div>{% endif %}
+      {% if block.settings.link_label != blank and block.settings.link_url != blank %}<a class="ai-editorial-{{ ai_gen_id }}__link" href="{{ block.settings.link_url }}">{{ block.settings.link_label }}</a>{% endif %}
+    </div>
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Editorial feature",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The winter edit" },
+    { "type": "text", "id": "title", "label": "Title", "default": "A considered approach to winter" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Explore thoughtful layers, tactile textures, and enduring silhouettes designed for the season ahead." },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Explore the edit" },
+    { "type": "url", "id": "link_url", "label": "Link" },
+    { "type": "header", "content": "Style" },
+    { "type": "font_picker", "id": "heading_font", "label": "Heading font", "default": "acme_n4" },
+    { "type": "font_picker", "id": "body_font", "label": "Body font", "default": "almarai_n4" },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 44, "max": 96, "step": 4, "unit": "px", "default": 68 },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "border_width", "label": "Rule thickness", "min": 0, "max": 4, "step": 1, "unit": "px", "default": 1 },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#F3F3F3" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#121212" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#121212" }
+  ],
+  "presets": [{ "name": "Editorial feature" }],
+  "tag": null,
+  "class": "editorial-feature-block"
+}
 {% endschema %}
