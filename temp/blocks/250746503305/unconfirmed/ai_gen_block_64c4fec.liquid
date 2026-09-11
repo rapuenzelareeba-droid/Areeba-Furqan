@@ -1,6 +1,261 @@
+{% doc %}
+  @prompt
+    An interactive vertical timeline that highlights as the user scrolls
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-timeline-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    color: {{ block.settings.text_color }};
+    background: {{ block.settings.background_color }};
+    padding: {{ block.settings.vertical_padding }}px {{ block.settings.horizontal_padding }}px;
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__heading {
+    max-width: 720px;
+    margin: 0 auto {{ block.settings.heading_spacing }}px;
+    text-align: {{ block.settings.alignment }};
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__title {
+    margin: 0 0 10px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.15;
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__intro {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__track {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: {{ block.settings.line_width }}px;
+    background: {{ block.settings.line_color }};
+    transform: translateX(-50%);
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    min-height: 180px;
+    align-items: center;
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__item:nth-child(even) .ai-timeline-{{ ai_gen_id }}__content {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__content {
+    padding: 22px;
+    border: 1px solid {{ block.settings.card_border_color }};
+    background: {{ block.settings.card_background }};
+    opacity: 0.5;
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__item.is-active .ai-timeline-{{ ai_gen_id }}__content {
+    opacity: 1;
+    border-color: {{ block.settings.active_color }};
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__marker {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: {{ block.settings.marker_size }}px;
+    height: {{ block.settings.marker_size }}px;
+    border: {{ block.settings.marker_border_width }}px solid {{ block.settings.background_color }};
+    border-radius: 50%;
+    background: {{ block.settings.line_color }};
+    box-shadow: 0 0 0 1px {{ block.settings.line_color }};
+    transform: translate(-50%, -50%);
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__item.is-active .ai-timeline-{{ ai_gen_id }}__marker {
+    background: {{ block.settings.active_color }};
+    box-shadow: 0 0 0 2px {{ block.settings.active_color }};
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__eyebrow {
+    margin: 0 0 8px;
+    color: {{ block.settings.active_color }};
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__item-title {
+    margin: 0 0 8px;
+    color: {{ block.settings.heading_color }};
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
+  .ai-timeline-{{ ai_gen_id }}__description {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-timeline-{{ ai_gen_id }} {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    .ai-timeline-{{ ai_gen_id }}__title {
+      font-size: {{ block.settings.mobile_heading_size }}px;
+    }
+
+    .ai-timeline-{{ ai_gen_id }}__line {
+      left: 14px;
+      transform: none;
+    }
+
+    .ai-timeline-{{ ai_gen_id }}__item,
+    .ai-timeline-{{ ai_gen_id }}__item:nth-child(even) .ai-timeline-{{ ai_gen_id }}__content {
+      display: block;
+      min-height: 0;
+      padding-left: 44px;
+    }
+
+    .ai-timeline-{{ ai_gen_id }}__content,
+    .ai-timeline-{{ ai_gen_id }}__item:nth-child(even) .ai-timeline-{{ ai_gen_id }}__content {
+      margin: 18px 0 28px;
+    }
+
+    .ai-timeline-{{ ai_gen_id }}__marker {
+      top: 28px;
+      left: 14px;
+      transform: translate(-50%, 0);
+    }
+  }
+{% endstyle %}
+
+<scroll-timeline-{{ ai_gen_id }} class="ai-timeline-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-timeline-{{ ai_gen_id }}__heading">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-timeline-{{ ai_gen_id }}__title">{{ block.settings.heading }}</h2>
+    {% endif %}
+    {% if block.settings.intro != blank %}
+      <p class="ai-timeline-{{ ai_gen_id }}__intro">{{ block.settings.intro }}</p>
+    {% endif %}
+  </div>
+
+  <div class="ai-timeline-{{ ai_gen_id }}__track">
+    <div class="ai-timeline-{{ ai_gen_id }}__line" aria-hidden="true"></div>
+    {% for i in (1..5) %}
+      {% liquid
+        assign eyebrow_key = 'item_' | append: i | append: '_eyebrow'
+        assign title_key = 'item_' | append: i | append: '_title'
+        assign description_key = 'item_' | append: i | append: '_description'
+        assign eyebrow = block.settings[eyebrow_key]
+        assign item_title = block.settings[title_key]
+        assign description = block.settings[description_key]
+      %}
+      {% if item_title != blank or description != blank %}
+        <article class="ai-timeline-{{ ai_gen_id }}__item{% if forloop.first %} is-active{% endif %}" data-timeline-item>
+          <span class="ai-timeline-{{ ai_gen_id }}__marker" aria-hidden="true"></span>
+          <div class="ai-timeline-{{ ai_gen_id }}__content">
+            {% if eyebrow != blank %}<p class="ai-timeline-{{ ai_gen_id }}__eyebrow">{{ eyebrow }}</p>{% endif %}
+            {% if item_title != blank %}<h3 class="ai-timeline-{{ ai_gen_id }}__item-title">{{ item_title }}</h3>{% endif %}
+            {% if description != blank %}<p class="ai-timeline-{{ ai_gen_id }}__description">{{ description }}</p>{% endif %}
+          </div>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</scroll-timeline-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ScrollTimeline{{ ai_gen_id }} extends HTMLElement {
+      connectedCallback() {
+        this.items = Array.from(this.querySelectorAll('[data-timeline-item]'));
+        if (!this.items.length || !('IntersectionObserver' in window)) return;
+        this.observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.items.forEach((item) => item.classList.toggle('is-active', item === entry.target));
+            }
+          });
+        }, { rootMargin: '-38% 0px -38% 0px', threshold: 0 });
+        this.items.forEach((item) => this.observer.observe(item));
+      }
+      disconnectedCallback() {
+        if (this.observer) this.observer.disconnect();
+      }
+    }
+    if (!customElements.get('scroll-timeline-{{ ai_gen_id }}')) {
+      customElements.define('scroll-timeline-{{ ai_gen_id }}', ScrollTimeline{{ ai_gen_id }});
+    }
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Scroll timeline",
+  "settings": [
+    {"type":"header","content":"Content"},
+    {"type":"text","id":"heading","label":"Heading","default":"Our journey"},
+    {"type":"textarea","id":"intro","label":"Intro","default":"Follow the moments that shaped our story."},
+    {"type":"header","content":"Timeline items"},
+    {"type":"text","id":"item_1_eyebrow","label":"Item 1 label","default":"01"},
+    {"type":"text","id":"item_1_title","label":"Item 1 title","default":"The beginning"},
+    {"type":"textarea","id":"item_1_description","label":"Item 1 description","default":"Share the first meaningful moment in your story."},
+    {"type":"text","id":"item_2_eyebrow","label":"Item 2 label","default":"02"},
+    {"type":"text","id":"item_2_title","label":"Item 2 title","default":"Growing together"},
+    {"type":"textarea","id":"item_2_description","label":"Item 2 description","default":"Describe how your idea evolved over time."},
+    {"type":"text","id":"item_3_eyebrow","label":"Item 3 label","default":"03"},
+    {"type":"text","id":"item_3_title","label":"Item 3 title","default":"A defining moment"},
+    {"type":"textarea","id":"item_3_description","label":"Item 3 description","default":"Highlight a milestone your customers will remember."},
+    {"type":"text","id":"item_4_eyebrow","label":"Item 4 label","default":"04"},
+    {"type":"text","id":"item_4_title","label":"Item 4 title","default":"Looking ahead"},
+    {"type":"textarea","id":"item_4_description","label":"Item 4 description","default":"Share the next chapter and what inspires it."},
+    {"type":"text","id":"item_5_eyebrow","label":"Item 5 label","default":"05"},
+    {"type":"text","id":"item_5_title","label":"Item 5 title","default":"Today"},
+    {"type":"textarea","id":"item_5_description","label":"Item 5 description","default":"End with the current purpose behind your brand."},
+    {"type":"header","content":"Layout"},
+    {"type":"range","id":"desktop_width_percent","label":"Desktop width","min":50,"max":100,"step":5,"unit":"%","default":100},
+    {"type":"select","id":"alignment","label":"Heading alignment","options":[{"value":"left","label":"Left"},{"value":"center","label":"Center"},{"value":"right","label":"Right"}],"default":"center"},
+    {"type":"range","id":"vertical_padding","label":"Vertical padding","min":0,"max":100,"step":5,"unit":"px","default":60},
+    {"type":"range","id":"horizontal_padding","label":"Horizontal padding","min":0,"max":80,"step":5,"unit":"px","default":20},
+    {"type":"range","id":"heading_spacing","label":"Heading spacing","min":10,"max":80,"step":5,"unit":"px","default":40},
+    {"type":"range","id":"heading_size","label":"Heading size","min":24,"max":64,"step":2,"unit":"px","default":42},
+    {"type":"range","id":"mobile_heading_size","label":"Mobile heading size","min":20,"max":48,"step":2,"unit":"px","default":32},
+    {"type":"range","id":"line_width","label":"Line width","min":1,"max":6,"step":1,"unit":"px","default":2},
+    {"type":"range","id":"marker_size","label":"Marker size","min":12,"max":32,"step":2,"unit":"px","default":18},
+    {"type":"range","id":"marker_border_width","label":"Marker border","min":1,"max":6,"step":1,"unit":"px","default":3},
+    {"type":"header","content":"Colors"},
+    {"type":"color","id":"background_color","label":"Background","default":"#FFFFFF"},
+    {"type":"color","id":"card_background","label":"Card background","default":"#F3F3F3"},
+    {"type":"color","id":"text_color","label":"Text","default":"#121212"},
+    {"type":"color","id":"heading_color","label":"Headings","default":"#121212"},
+    {"type":"color","id":"line_color","label":"Line","default":"#B5B5B5"},
+    {"type":"color","id":"card_border_color","label":"Card border","default":"#D6D6D6"},
+    {"type":"color","id":"active_color","label":"Active highlight","default":"#121212"}
+  ],
+  "presets": [{"name":"Scroll timeline"}],
+  "tag": null,
+  "class": "scroll-timeline-block"
+}
 {% endschema %}
