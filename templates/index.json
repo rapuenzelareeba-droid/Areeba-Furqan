@@ -57,16 +57,16 @@
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
-        "show_description": false,
+        "show_description": true,
         "description_style": "body",
         "columns_desktop": 4,
-        "enable_desktop_slider": false,
+        "enable_desktop_slider": true,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
         "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
+        "image_ratio": "portrait",
+        "image_shape": "chevronright",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
@@ -141,6 +141,7 @@
       "blocks": {
         "ai_gen_block_64c4fec_AmMNRW": {
           "type": "ai_gen_block_64c4fec",
+          "disabled": true,
           "settings": {
             "heading": "Our journey",
             "intro": "Follow the moments that shaped our story.",
@@ -184,12 +185,88 @@
         "ai_gen_block_64c4fec_AmMNRW"
       ],
       "settings": {}
+    },
+    "slideshow_67yNkW": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_dhTE3e": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/autumn-photographer-taking-picture_925x_1619bf60-7f6c-4f08-8201-9e5f62349789.jpg",
+            "image_overlay_opacity": 30,
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "Click me",
+            "link": "shopify://products/black-leather-bag",
+            "button_style_secondary": true,
+            "show_text_box": true,
+            "box_align": "middle-left",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-1"
+          }
+        },
+        "slide_J6XDxJ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/young-hip-woman-at-carnival_925x_4a1c7841-27c9-4aa1-98ef-f5d77c5cd675.jpg",
+            "image_overlay_opacity": 20,
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        },
+        "slide_ieqpBQ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/striped-blouse-fashion_925x_1a1ff947-7950-4779-91a0-6583c619c0e5.jpg",
+            "image_overlay_opacity": 20,
+            "heading": "Image slide",
+            "heading_size": "h2",
+            "subheading": "",
+            "button_label": "Button label",
+            "link": "shopify://products/striped-silk-blouse",
+            "button_style_secondary": true,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_dhTE3e",
+        "slide_J6XDxJ",
+        "slide_ieqpBQ"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "image_behavior": "ambient",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
     }
   },
   "order": [
     "image_banner",
     "featured_collection",
     "multirow_JUPBrk",
-    "1789155352269acb55"
+    "1789155352269acb55",
+    "slideshow_67yNkW"
   ]
 }
