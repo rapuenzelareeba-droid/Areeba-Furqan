@@ -38,44 +38,6 @@
     },
     "17892393372b6818c3": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_28786a9_kgFDke": {
-          "type": "ai_gen_block_28786a9",
-          "settings": {
-            "heading": "Our journey",
-            "heading_alignment": "left",
-            "desktop_width_percent": 100,
-            "section_padding": 60,
-            "heading_size": 40,
-            "item_title_size": 26,
-            "background_color": "#FFFFFF",
-            "text_color": "#121212",
-            "accent_color": "#334FB4",
-            "accent_text_color": "#FFFFFF",
-            "line_color": "#D9D9D9",
-            "muted_color": "#555555",
-            "item_1_eyebrow": "Beginning",
-            "item_1_title": "A thoughtful beginning",
-            "item_1_description": "Share the first milestone in your story.",
-            "item_2_eyebrow": "Growing",
-            "item_2_title": "Finding our direction",
-            "item_2_description": "Describe how your ideas became a clear purpose.",
-            "item_3_eyebrow": "Today",
-            "item_3_title": "Made for meaningful moments",
-            "item_3_description": "Highlight what makes your collection special today.",
-            "item_4_eyebrow": "Next",
-            "item_4_title": "Looking ahead",
-            "item_4_description": "Invite customers to follow along with what comes next.",
-            "item_5_eyebrow": "Beyond",
-            "item_5_title": "The story continues",
-            "item_5_description": "Close with a memorable final milestone or message."
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_28786a9_kgFDke"
-      ],
       "settings": {}
     },
     "header": {
